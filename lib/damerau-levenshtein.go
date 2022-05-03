@@ -13,14 +13,14 @@ func NewDamerauLevenshtein(replaceCost, swapCost int, limited bool) DamerauLeven
 }
 
 func (d DamerauLevenshtein) limitedWalk(a, b string) (int, error) {
-	aLen := len(a)
-	bLen := len(b)
+	aRunes, bRunes := []rune(a), []rune(b)
+	aLen, bLen := len(aRunes), len(bRunes)
 	dp := createTable(aLen, bLen)
 
 	for i := 1; i <= aLen; i++ {
 		for k := 1; k <= bLen; k++ {
 			cost := d.Levenshtein.ReplaceCost
-			if a[i-1] == b[k-1] {
+			if aRunes[i-1] == bRunes[k-1] {
 				cost = 0
 			}
 
