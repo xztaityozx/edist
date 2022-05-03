@@ -13,6 +13,7 @@ const (
 
 var rootCmd = &cobra.Command{
 	Use: "edist",
+  Version: "v0.1.0",
 	Run: func(cmd *cobra.Command, args []string) {
 		_ = cmd.Usage()
 	},
