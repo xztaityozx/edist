@@ -78,3 +78,10 @@ $ edist hamming 1011 1010
 $ edist H 1011 1010
 1
 ```
+
+
+## Global Options
+
+```shell
+  -n, --normalize   apply normalization
+```

@@ -17,7 +17,11 @@ var hammingCmd = &cobra.Command{
 			log.Fatal().Msgf("%v", err)
 		}
 
-		fmt.Println(result)
+		if v, _ := cmd.Flags().GetBool(OptionNameNormalize); v {
+			fmt.Println(lib.Normalize(args[0], args[1], result))
+		} else {
+			fmt.Println(result)
+		}
 	},
 }
 

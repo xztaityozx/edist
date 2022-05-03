@@ -1,5 +1,7 @@
 package lib
 
+import "github.com/samber/lo"
+
 type EditDistance interface {
 	Walk(a, b string) (int, error)
 }
@@ -18,4 +20,14 @@ func createTable(a, b int) [][]int {
 	}
 
 	return dp
+}
+
+func Normalize(a, b string, distance int) float64 {
+	aLen, bLen := len([]rune(a)), len([]rune(b))
+	if aLen == 0 && bLen == 0 {
+		return float64(distance)
+	}
+
+	max := lo.Max([]int{aLen, bLen})
+	return float64(distance) / float64(max)
 }

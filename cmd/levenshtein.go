@@ -26,7 +26,11 @@ var levenshteinCmd = &cobra.Command{
 		}
 
 		result, _ := lib.NewLevenshtein(cost).Walk(a, b)
-		fmt.Println(result)
+		if v, _ := cmd.Flags().GetBool(OptionNameNormalize); v {
+			fmt.Println(lib.Normalize(a, b, result))
+		} else {
+			fmt.Println(result)
+		}
 	},
 }
 
@@ -51,7 +55,11 @@ var damerauLevenshteinCmd = &cobra.Command{
 		}
 
 		result, _ := lib.NewDamerauLevenshtein(replaceCost, swapCost, limited).Walk(a, b)
-		fmt.Println(result)
+		if v, _ := cmd.Flags().GetBool(OptionNameNormalize); v {
+			fmt.Println(lib.Normalize(a, b, result))
+		} else {
+			fmt.Println(result)
+		}
 	},
 }
 
