@@ -85,3 +85,7 @@ $ edist H 1011 1010
 ```shell
   -n, --normalize   apply normalization
 ```
+
+# LICENSE
+
+[MIT](./LICENSE)
