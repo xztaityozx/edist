@@ -13,7 +13,7 @@ go install github.com/xztaityozx/edist@latest
 
 ## Download PreCompiled Binary
 
-FIXME
+Download from pre-compiled binary from [GitHub Releases](https://github.com/xztaityozx/edist/releases)
 
 
 # Usage
