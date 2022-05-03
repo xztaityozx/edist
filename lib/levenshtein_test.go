@@ -39,6 +39,7 @@ func TestLevenshtein_Walk(t *testing.T) {
 		{name: "str <-> abc", arg: arg{a: "str", b: "abc"}, expect: 6, cost: 2, hasError: false},
 		{name: "str <-> str", arg: arg{a: "str", b: "str"}, expect: 0, cost: 2, hasError: false},
 		{name: "str <-> ", arg: arg{a: "str", b: ""}, expect: 3, cost: 2, hasError: false},
+		{name: "キュアミラクル <-> キュアマジカル", arg: arg{a: "キュアミラクル", b: "キュアマジカル"}, expect: 3, cost: 1, hasError: false},
 	}
 
 	for _, tt := range tests {

@@ -39,16 +39,9 @@ func (d DamerauLevenshtein) limitedWalk(a, b string) (int, error) {
 	return dp[aLen][bLen], nil
 }
 
-func min(a, b int) int {
-	if a < b {
-		return a
-	} else {
-		return b
-	}
-}
-
 func (d DamerauLevenshtein) walk(a, b string) (int, error) {
-	aLen, bLen := len(a), len(b)
+	aRunes, bRunes := []rune(a), []rune(b)
+	aLen, bLen := len(aRunes), len(bRunes)
 	max := aLen + bLen
 
 	dict := map[rune]int{}
@@ -76,14 +69,16 @@ func (d DamerauLevenshtein) walk(a, b string) (int, error) {
 			l := db
 
 			cost := d.ReplaceCost
-			if a[i-1] == b[j-1] {
+			if aRunes[i-1] == bRunes[j-1] {
 				db = j
 				cost = 0
 			}
 
-			dp[i][j] = min(dp[i-1][j-1]+cost, dp[i][j-1]+1)
-			dp[i][j] = min(dp[i][j], dp[i-1][j]+1)
-			dp[i][j] = min(dp[i][j], dp[k-1][l-1]+(i-k-1)+d.SwapCost+(j-l-1))
+			dp[i][j] = lo.Min([]int{
+				dp[i-1][j-1] + cost, dp[i][j-1] + 1,
+				dp[i-1][j] + 1,
+				dp[k-1][l-1] + (i - k - 1) + d.SwapCost + (j - l - 1),
+			})
 		}
 		dict[rune(a[i-1])] = i
 	}

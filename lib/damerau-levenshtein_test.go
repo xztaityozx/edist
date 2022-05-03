@@ -51,12 +51,15 @@ func TestDamerauLevenshtein_Walk(t *testing.T) {
 		{args: args{replaceCost: 1, swapCost: 2, limited: true, a: "ca", b: "abc"}, expect: 3, hasError: false},
 		{args: args{replaceCost: 1, swapCost: 1, limited: true, a: "acb", b: "abc"}, expect: 1, hasError: false},
 		{args: args{replaceCost: 1, swapCost: 3, limited: true, a: "acb", b: "abc"}, expect: 2, hasError: false},
+		{args: args{replaceCost: 1, swapCost: 3, limited: true, a: "acb", b: "abc"}, expect: 2, hasError: false},
+		{args: args{replaceCost: 1, swapCost: 3, limited: true, a: "キュアミラクル", b: "キュアマジカル"}, expect: 3, hasError: false},
 
 		{args: args{replaceCost: 1, swapCost: 1, limited: false, a: "str", b: "stu"}, expect: 1, hasError: false},
 		{args: args{replaceCost: 1, swapCost: 2, limited: false, a: "str", b: "stu"}, expect: 1, hasError: false},
 		{args: args{replaceCost: 1, swapCost: 1, limited: false, a: "ca", b: "abc"}, expect: 2, hasError: false},
 		{args: args{replaceCost: 1, swapCost: 1, limited: false, a: "acb", b: "abc"}, expect: 1, hasError: false},
 		{args: args{replaceCost: 1, swapCost: 3, limited: false, a: "acb", b: "abc"}, expect: 2, hasError: false},
+		{args: args{replaceCost: 1, swapCost: 3, limited: false, a: "キュアミラクル", b: "キュアマジカル"}, expect: 3, hasError: false},
 	}
 
 	for _, v := range tests {
