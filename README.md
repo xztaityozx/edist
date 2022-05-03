@@ -67,3 +67,14 @@ $ edist DL "キュアミラクル" "キュアミラクル"
   -c, --replace-cost int   cost for replace (default 1)
   -s, --swap-cost int      cost for swap (default 1)
 ```
+
+## Calculate `Hamming Distance`
+
+```shell
+$ edist hamming 1011 1010
+1
+
+# `H` subcommand is alias for hamming
+$ edist H 1011 1010
+1
+```
